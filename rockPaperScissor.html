@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta  name="Author" content="Eyosiyas Gezahegn">
   <link rel="stylesheet" href="rockPaperScissor.css">
-  <script src="rockPaperScissor.js"> </script>
+  <script src="rockPaperScissor.js" defer> </script>
   <title>Rock Paper Scissor Game</title>
   </head>
   <body>
@@ -14,6 +14,9 @@
     <button onclick="playGame('Rock');">Rock</button>
     <button onclick="playGame('Paper')">Paper</button>
     <button onclick="playGame('Scissor')">Scissor</button>
+    <p class="js-result"></p>
+    <p class="js-moves"></p>
+    <p class="js-score"></p>
   <button onclick="reset_score()">Reset Score</button>
 
   </body>

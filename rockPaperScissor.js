@@ -1,8 +1,10 @@
-const score ={
+let score =JSON.parse(localStorage.getItem('score'))||{
   Tie:0,
   'You Win':0,
   'You Lose':0
-}
+};
+updateScore();
+
 function playGame(playerMove){
 const computerMove = selectComputerMove();
   let result='';
@@ -10,48 +12,64 @@ const computerMove = selectComputerMove();
   if(playerMove==='Rock'){
     if(computerMove==='Rock'){
       result='Tie';
-      score.Tie++;
-    }
+      }
     else if(computerMove==='Paper'){
       result='You Lose';
-      score["You Lose"]++;
     }
     else {
       result='You Win';
-      score["You Win"]++;
     }
   }
-
   else if(playerMove==='Paper'){
     if(computerMove==='Rock'){
       result='You Win';
-      score["You Win"]++;
     }
     else if(computerMove==='Paper'){
       result='Tie';
-      score['Tie']++;
     }
     else {
       result='You Lose';
-      score['You Lose']
     }
 }
-
 else{
     if(computerMove==='Rock'){
       result='You Lose';
-      score['You Lose']++;
     }
     else if(computerMove==='Paper'){
       result='You Win';
-      score['You Win']++;
     }
     else {
       result='Tie';
-      score.Tie++;
     }
 }
-displayResult(playerMove,computerMove,result, score);
+document.querySelector('.js-result').innerHTML=result;
+
+
+if(result==='Tie'){
+  score.Tie++;
+}
+else if(result==='You Win'){
+  score['You Win']++;
+}
+else{
+  score['You Lose']++;
+}
+
+if(score['You Win']===5){
+  alert('You Win the Game');
+  reset_score();
+}
+else if(score['You Lose']===5){
+  alert('You Lose the Game');
+  reset_score();
+}
+
+document.querySelector('.js-moves').innerHTML=`You ${playerMove} - ${computerMove} Computer`;
+
+updateScore();
+
+localStorage.setItem('score',JSON.stringify(score));
+
 }
 
 
@@ -73,10 +91,13 @@ function reset_score(){
   score.Tie=0;
   score["You Lose"]=0;
   score["You Win"]=0;
+  localStorage.removeItem('score');
+  updateScore();
 }
 
-function displayResult(playerMove,computerMove,result){
-  alert (`You picked ${playerMove}. computer picked ${computerMove}  , ${result}.
-Wins: ${score['You Win']}, Losses: ${score['You Lose']}, Ties:${score.Tie}
-`)
+
+function updateScore(){
+  document.querySelector('.js-score')
+    .innerHTML = `Wins: ${score['You Win']}, Losses: ${score['You Lose']}, Ties:${score.Tie}`;
+
 }
