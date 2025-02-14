@@ -63,9 +63,7 @@ else if(score['You Lose']===5){
   alert('You Lose the Game');
   reset_score();
 }
-
-document.querySelector('.js-moves').innerHTML=`You ${playerMove} - ${computerMove} Computer`;
-
+displayMoves(playerMove,computerMove);
 updateScore();
 
 localStorage.setItem('score',JSON.stringify(score));
@@ -99,5 +97,10 @@ function reset_score(){
 function updateScore(){
   document.querySelector('.js-score')
     .innerHTML = `Wins: ${score['You Win']}, Losses: ${score['You Lose']}, Ties:${score.Tie}`;
+
+}
+function displayMoves(playerMove,computerMove){
+  
+document.querySelector('.js-moves').innerHTML=`You <img src="images/${playerMove}-emoji.png" alt ="" class="emoji"><img src="images/${computerMove}-emoji.png" alt="" class="emoji"> Computer`;
 
 }

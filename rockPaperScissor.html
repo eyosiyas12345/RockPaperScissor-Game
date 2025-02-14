@@ -8,16 +8,30 @@
   <script src="rockPaperScissor.js" defer> </script>
   <title>Rock Paper Scissor Game</title>
   </head>
+
   <body>
-    <p>Rock Papper Scissor Game</p>
+    <div class="container">
+      <!-- upper sub-container-->
+      <div>
+    <p class="game-title">Rock Paper Scissors</p>
+    
+    <button onclick="playGame('Rock');" class="emoji-button"><img src="images/Rock-emoji.png" alt="" class="emoji"></button>
 
-    <button onclick="playGame('Rock');">Rock</button>
-    <button onclick="playGame('Paper')">Paper</button>
-    <button onclick="playGame('Scissor')">Scissor</button>
-    <p class="js-result"></p>
-    <p class="js-moves"></p>
+    <button onclick="playGame('Paper')"class="emoji-button"><img src="images/Paper-emoji.png" alt="" class="emoji"></button>
+
+    <button onclick="playGame('Scissor')"class="emoji-button"><img src="images/Scissor-emoji.png" alt="" class="emoji"></button>
+      </div>
+<!--end of upper-->
+
+<!--lower sub-container-->
+<div>
+    <p class="js-result result"></p>
+    <p class="js-moves moves">
+    </p>
     <p class="js-score"></p>
-  <button onclick="reset_score()">Reset Score</button>
+  <button onclick="reset_score()" class="reset-button">Reset Score</button>
+</div>
 
+</div>
   </body>
 </html>
