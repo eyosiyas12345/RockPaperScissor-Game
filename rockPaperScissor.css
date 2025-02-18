@@ -36,7 +36,8 @@ justify-content:center;
 .moves{
   margin-bottom:50px;
 }
-.reset-button{
+.reset-button,
+.auto-button{
   padding: 10px 20px;
   border-radius:none;
   font-size:15px;

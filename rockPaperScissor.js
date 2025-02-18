@@ -1,5 +1,5 @@
 let score =JSON.parse(localStorage.getItem('score'))||{
-  Tie:0,
+  Tie:0,  
   'You Win':0,
   'You Lose':0
 };
@@ -55,14 +55,14 @@ else{
   score['You Lose']++;
 }
 
-if(score['You Win']===5){
-  alert('You Win the Game');
-  reset_score();
-}
-else if(score['You Lose']===5){
-  alert('You Lose the Game');
-  reset_score();
-}
+// if(score['You Win']===5){
+//   alert('You Win the Game');
+//   reset_score();
+// }
+// else if(score['You Lose']===5){
+//   alert('You Lose the Game');
+//   reset_score();
+// }
 displayMoves(playerMove,computerMove);
 updateScore();
 
@@ -102,5 +102,25 @@ function updateScore(){
 function displayMoves(playerMove,computerMove){
   
 document.querySelector('.js-moves').innerHTML=`You <img src="images/${playerMove}-emoji.png" alt ="" class="emoji"><img src="images/${computerMove}-emoji.png" alt="" class="emoji"> Computer`;
+}
+let isautoPlaying=false;
+let intervalId=0;
+autoBtn= document.querySelector('.js-auto-button')
 
+function autoplay(){
+
+  if(isautoPlaying){
+    autoBtn.innerHTML='Auto Play';
+clearInterval(intervalId);
+console.log('here');
+isautoPlaying=false;
+  }
+  else{
+    autoBtn.innerHTML='Stop Playing';
+    intervalId = setInterval(function() {
+      let playerMove=selectComputerMove();
+      playGame(playerMove);
+    },1000);
+    isautoPlaying=true;
+  }
 }
